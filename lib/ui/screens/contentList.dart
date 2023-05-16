@@ -45,7 +45,9 @@ class _ContentListState extends State<ContentList> {
     } else {
       if (listScroller.position.userScrollDirection ==
           ScrollDirection.forward) {
-        BlocProvider.of<ContentBloc>(context).add(HideScrollButton());
+        if (listScroller.offset <= listScroller.position.minScrollExtent + 30) {
+          BlocProvider.of<ContentBloc>(context).add(HideScrollButton());
+        }
       }
     }
   }
